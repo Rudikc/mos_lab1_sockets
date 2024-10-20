@@ -30,8 +30,11 @@ void benchmark(int client_socket, size_t packet_size) {
     free(data);
 
     double elapsed = (double)(end - start) / CLOCKS_PER_SEC;
+    double throughput =
+        (double)DATA_SIZE / (1024 * 1024) / elapsed;  // Throughput in MB/s
     printf("Time taken for %ld packets of size %ld bytes: %.6f seconds\n",
            DATA_SIZE / packet_size, packet_size, elapsed);
+    printf("Throughput: %.6f MB/s\n", throughput);
 }
 
 int main() {
